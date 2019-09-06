@@ -10,3 +10,5 @@ pt-BR:
         color: 'Cor'
         car_model: 'Modelo'
         car_model_id: 'Modelo'
+  available: Disponível
+  on_maintenance: Em manutenção

@@ -17,8 +17,6 @@ class RentalsController < ApplicationController
     render :new
   end
 
-  def calcula_quilometragem; end
-
   def show
     @rental = Rental.find(params[:id])
   end

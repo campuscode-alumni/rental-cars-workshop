@@ -1,24 +1,25 @@
-# README
+# Rental Cars
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Rental Cars é um projeto de sistema administrativo de uma empresa que aluga
+carros para o público em geral. O foco do sistema é gerenciar a frota de carros,
+os clientes e as unidades (filiais) da empresa.
 
-Things you may want to cover:
 
-* Ruby version
+## Como iniciar o projeto
 
-* System dependencies
+Para executar esse projeto você deve ter um computador, preferencialmente com
+Linux, com a linguagem de programação Ruby na versão 2.6.4
 
-* Configuration
+Dentro do diretório do projeto, você deve instalar as dependências definidas no
+arquivo `Gemfile` com o comando `bundle install`.
 
-* Database creation
+Com todas dependências instaladas, execute `rails server` e acesse
+`localhost:3000` em seu navegador.
 
-* Database initialization
 
-* How to run the test suite
+## Executando os testes
 
-* Services (job queues, cache servers, search engines, etc.)
+Com todas dependências instaladas, como descrito na seção anterior, em seu
+terminal execute `rspec`.
 
-* Deployment instructions
 
-* ...

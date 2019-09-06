@@ -22,7 +22,7 @@ feature 'User register rental' do
     expect(page).to have_content(user.email)
   end
 
-  scenario 'ensure only cars on current subsidiary' do
+  scenario 'only from current subsidiary' do
     sub_paulista = create(:subsidiary, name: 'Paulista')
     sub_sao_miguel = create(:subsidiary, name: 'São Miguel')
     user_paulista = create(:user, subsidiary: sub_paulista)
@@ -42,5 +42,23 @@ feature 'User register rental' do
 
     expect(page).to_not have_content(car_sao_miguel.car_identification)
     expect(page).to have_content(car_paulista.car_identification)
+  end
+
+  scenario 'customer cannot rent twice' do
+    subsidiary = create(:subsidiary)
+    user = create(:user, subsidiary: subsidiary)
+    car = create(:car, subsidiary: user.subsidiary)
+    customer = create(:customer, cpf: '123456789')
+    create(:rental, car: car, user: user, customer: customer)
+
+    login_as user
+    visit root_path
+    click_on 'Registrar Locação'
+
+    select car.car_identification.to_s, from: 'Carro'
+    select customer.cpf, from: 'Cliente'
+    click_on 'Enviar'
+
+    expect(page).to have_content('Cliente possui locação em aberto')
   end
 end

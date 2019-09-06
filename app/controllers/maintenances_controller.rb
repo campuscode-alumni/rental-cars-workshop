@@ -1,18 +1,18 @@
 class MaintenancesController < ApplicationController
   def new
     @car = Car.find(params[:car_id])
-    @maintenance = Maintenance.new
-    # @maintenance.car = @car
+    @maintenance = @car.maintenances.build
   end
 
   def create
     @maintenance = Maintenance.new
     @maintenance.car = Car.find(params[:car_id])
     @maintenance.provider = Provider.find(params[:maintenance][:provider_id])
-    @maintenance.save
-    @maintenance.car.on_maintenance!
-    flash[:notice] = I18n.t('maintenance.flash.create')
-    redirect_to @maintenance.car
+    if @maintenance.save
+      @maintenance.car.on_maintenance!
+      flash[:notice] = I18n.t('maintenance.flash.create')
+      redirect_to @maintenance.car
+    end
   end
 
   def index

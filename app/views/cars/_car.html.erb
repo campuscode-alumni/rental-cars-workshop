@@ -1,13 +1,19 @@
-<h1>Detalhes do Veículo</h1>
-<dl>
-  <strong><dt>Modelo do Veículo</dt></strong>
-  <dd><%= car.car_model.name %></dd>
-  <strong><dt>Placa</dt></strong>
-  <dd><%= car.license_plate %></dd>
-  <strong><dt>Ano</dt></strong>
-  <dd><%= car.car_model.year%></dd>
-  <strong><dt>Cor</dt></strong>
-  <dd><%= car.color %>
-  </dd><strong><dt>Informaçōes complementares sobre o veículo</dt></strong>
-  <dd><%= car.car_model.car_options %></dd>
+<dl class="row">
+  <dt class="col-sm-3">Modelo:</dt>
+  <dd class="col-sm-9"><%= car.car_model.name %></dd>
+
+  <dt class="col-sm-3">Quilometragem:</dt>
+  <dd class="col-sm-9"><%= car.car_km.to_s %></dd>
+
+  <dt class="col-sm-3">Cor:</dt>
+  <dd class="col-sm-9"><%= car.color %></dd>
+
+  <dt class="col-sm-3">Placa:</dt>
+  <dd class="col-sm-9"><%= car.license_plate %></dd>
+
+  <dt class="col-sm-3">Status:</dt>
+  <dd class="col-sm-9"><%= t car.status %></dd>
+
+  <dt class="col-sm-3">Opcionais:</dt>
+  <dd class="col-sm-9"><%= car.car_model.car_options %></dd>
 </dl>
