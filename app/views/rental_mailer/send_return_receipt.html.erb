@@ -1,0 +1,10 @@
+<h1>Seu recibo de devolução</h1>
+
+<h3>Cliente:</h3>
+<p>Nome: <%= @customer.name %></p>
+
+<h3>Veículo:</h3>
+<p><%= "#{@car.car_model.name}  #{@car.license_plate}" %></p>
+
+<h3>Locação:</h3>
+<p>Data de devolução: <%= @rental.finished_at %></p>

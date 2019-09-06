@@ -1,0 +1,7 @@
+<p>Nome: <%= @customer.name %></p>
+<p>Email: <%= @customer.email %></p>
+<p>CPF: <%= @customer.cpf %></p>
+<p>Telefone: <%= @customer.phone %></p>
+
+<%= link_to "Editar cliente", edit_customer_path, class: "btn btn-primary" %>
+<%= link_to "Voltar", root_path, class: "btn btn-primary" %>

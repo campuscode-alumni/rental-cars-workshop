@@ -1,0 +1,6 @@
+<%= form_for ([@car, @maintenance]) do |f| %>
+  <%= f.label :provider_id, 'Fornecedor parceiro' %>
+  <%= f.collection_select(:provider_id, Provider.all, :id, :name) %>
+
+  <%= f.submit 'Enviar para manutenção' %>
+<% end %>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>RentalCars</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <%= render 'shared/navbar' %>
+    <div class="container mt-3">
+      <% if flash[:success] %>
+       <div class="alert alert-success">
+         <%= flash[:success] %>
+       </div>
+      <% end %>
+      <% if flash[:error] %>
+       <div class="alert alert-danger">
+         <%= flash[:error] %>
+       </div>
+      <% end %>
+      <% if flash[:notice] %>
+       <div class="alert alert-danger">
+         <%= flash[:notice] %>
+       </div>
+      <% end %>
+      <%= yield %>
+    </div>
+  </body>
+</html>

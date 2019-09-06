@@ -1,0 +1,5 @@
+<h1>Carros em Manutenção</h1>
+
+<% @maintenances.each do |maintenance| %>
+  <p><%= link_to maintenance.car.car_identification, car_path(maintenance.car) %></p>
+<% end %>

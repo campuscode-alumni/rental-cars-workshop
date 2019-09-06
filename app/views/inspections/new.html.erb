@@ -1,0 +1,11 @@
+<%= form_for ([@car, @inspection]) do |f| %>
+ <%= f.label :fuel_level, 'Nível de combustível' %>
+ <%= f.select(:fuel_level,['0', '1/4', '1/2', '1'] ) %>
+ 
+ <%= f.label :cleanance_level, 'Nível de Limpeza' %>
+ <%= f.select(:cleanance_level,[['Muito sujo', 0], ['Sujo', 1],['Limpo', 5]] ) %>
+
+ <%= f.label :damages, 'Avarias' %>
+ <%= f.text_area :damages %>
+ <%= f.submit 'Vistoriado'%>
+<% end %>

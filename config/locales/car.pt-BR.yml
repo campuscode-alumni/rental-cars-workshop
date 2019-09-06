@@ -1,0 +1,12 @@
+---
+pt-BR:
+  activerecord:
+    models:
+      car: 'Carro'
+    attributes:
+      car:
+        car_km: 'Quilometragem'
+        license_plate: 'Placa'
+        color: 'Cor'
+        car_model: 'Modelo'
+        car_model_id: 'Modelo'

@@ -1,0 +1,6 @@
+<%= render @fine.car %>
+
+<p>Multa emitida em: <%= l @fine.issued_on %></p>
+<p>Quantidade de pontos: <%= @fine.demerit_points %></p>
+<p>Valor: <%= number_to_currency @fine.fine_value %></p>
+<p>Endereço da ocorrência: <%= @fine.address %></p>                                                                                                                   

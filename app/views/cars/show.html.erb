@@ -1,0 +1,40 @@
+<%= notice %>
+
+<dl class="row">
+  <dt class="col-sm-3">Modelo</dt>
+  <dd class="col-sm-9"><%= @car.car_model.name %></dd>
+
+  <dt class="col-sm-3">Quilometragem:</dt>
+  <dd class="col-sm-9"><%= @car.car_km.to_s %></dd>
+
+  <dt class="col-sm-3">Cor</dt>
+  <dd class="col-sm-9"><%= @car.color %></dd>
+
+  <dt class="col-sm-3">Placa</dt>
+  <dd class="col-sm-9"><%= @car.license_plate %></dd>
+
+  <dt class="col-sm-3">Status</dt>
+  <dd class="col-sm-9"><%= @car.status %></dd>
+</dl>
+
+<%= link_to 'Registrar Multa', new_car_fine_path(@car) %>
+
+<% if @car.on_maintenance? %>
+  <dd class="col-sm-9">Status: Em manutenção</dd>
+  <%= link_to "Dar baixa em manutenção", new_return_maintenance_path(@car.current_maintenance) %>
+<% else%>
+  <h3>Status: Disponível</h3>
+  <%= link_to "Enviar para vistoria", new_car_inspection_path(@car)%>
+  <%= link_to "Enviar para manutenção", new_car_maintenance_path(@car) %>
+<% end %>
+
+<% @car.rentals.each do |rental| %>
+  <%= rental.start_at %>
+  <% if rental.finished_at? %>
+    <%= rental.finished_at %>
+  <% else %>
+    <%= link_to "Devolução de carro", new_car_return_rental_path(rental) %>
+  <% end %>
+<% end %>
+
+

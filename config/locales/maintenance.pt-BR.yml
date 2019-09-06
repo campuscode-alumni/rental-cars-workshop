@@ -1,0 +1,13 @@
+---
+pt-BR:
+  maintenance:
+    flash:
+      create: 'Carro enviado para manutenção'
+  activerecord:
+    models:
+      maintenance: 'Manutenção'
+    attributes:
+      maintenance:
+        service_cost: 'Valor'
+        invoice: 'Nota Fiscal'
+        

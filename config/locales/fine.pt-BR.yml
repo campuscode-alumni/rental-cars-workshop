@@ -1,0 +1,15 @@
+---
+pt-BR:
+  activerecord:
+    models:
+      fine: 'Multa'
+    attributes:
+      fine:
+        issued_on: 'Data de emissāo'
+        demerit_points: 'Quantidade de pontos'
+        fine_value: 'Valor'
+        address: 'Endereço da ocorrência'
+  fines:
+    create: 
+      success: 'Multa registrada com sucesso'
+      error: 'Não foi posível cadastrar multa'

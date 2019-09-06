@@ -1,0 +1,31 @@
+require:
+  - rubocop-rails
+
+AllCops:
+ TargetRubyVersion: 2.6
+ UseCache: false
+ Exclude:
+   - 'bin/**/*'
+   - 'vendor/**/*'
+   - 'db/**/*'
+   - 'config/**/*'
+   - 'script/**/*'
+   - 'Rakefile'
+   - 'spec/rails_helper.rb'
+   - 'spec/spec_helper.rb'
+
+Documentation:
+ Enabled: false
+
+Style/FrozenStringLiteralComment:
+ Enabled: false
+
+Metrics/BlockLength:
+ ExcludedMethods: ['describe', 'context', 'feature', 'scenario', 'let']
+
+AsciiComments:
+  Enabled: false
+
+Style/ClassAndModuleChildren:
+  EnforcedStyle: compact
+

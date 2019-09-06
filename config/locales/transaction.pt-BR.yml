@@ -1,0 +1,10 @@
+---
+pt-BR:
+  activerecord:
+    models:
+      transaction: 'Transação'
+    attributes:
+      transaction:
+        amount: 'valor'
+        subisidiary_id: 'Filial'
+        subisidiary: 'Filial'

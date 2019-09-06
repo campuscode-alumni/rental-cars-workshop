@@ -1,0 +1,58 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <%= link_to 'Rental Cars', root_path, class: 'navbar-brand' %>
+  <button class="navbar-toggler" type="button" data-toggle="collapse"
+                                               data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                                               aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <%= link_to 'Home', root_path, class: 'nav-link' %>
+      </li>
+      <% if user_signed_in? %>
+        <li class="nav-item">
+          <%= link_to 'Registrar novo modelo', new_car_model_path, class: 'nav-link' %>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'Registrar nova filial', new_subsidiary_path, class: 'nav-link' %>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'Registrar novo carro', new_car_path, class: 'nav-link' %>
+        </li>
+        <li class="nav-item">
+        <%= link_to 'Registrar Locação', new_rental_path, class: 'nav-link' %>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'Registrar novo preço', new_subsidiary_car_model_path, class: 'nav-link' %>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'Registrar novo cliente', new_customer_path, class: 'nav-link' %>
+        </li>
+
+        <li class="nav-item">
+          <%= link_to 'Ver Clientes', customers_path, class: 'nav-link' %>
+        </li>
+
+        <li class="nav-item">
+          <%= link_to 'Carros em Manutenção', maintenances_path, class: 'nav-link' %>
+        </li>
+      <% end %>
+    </ul>
+    <ul class="navbar-nav ml-auto">
+      <% if user_signed_in? %>
+        <li class="nav-item d-flex align-items-center mr-sm-2">
+          <strong><%= current_user.email %></strong>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: 'btn btn-outline-primary' %>
+        </li>
+      <% else %>
+        <li class="nav-item">
+          <%= link_to 'Login', new_user_session_path, class: 'btn btn-outline-primary' %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</nav>

@@ -1,0 +1,17 @@
+<% @cars.each do |car|%>
+  <%= link_to "#{car.car_model.name} - #{car.license_plate}", car %>
+<% end %>
+
+
+<div id="maintenance">
+  <h1>Carros em manutenção</h1>
+  <% @cars_on_maintenance.each do |car|%>
+  <div class="row">
+    <div class="col-sm">
+      <%= render car %>
+    </div>
+  </div>
+  <% end %>
+  <%= link_to "Ver todos os carros em manutenção", maintenances_path %>
+</div>
+

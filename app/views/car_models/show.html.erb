@@ -1,0 +1,17 @@
+<dl class="row">
+  <dt class="col-sm-3">Nome</dt>
+  <dd class="col-sm-9"><%= @car_model.name %></dd>
+
+  <dt class="col-sm-3">Ano</dt>
+  <dd class="col-sm-9"><%= @car_model.year %></dd>
+
+  <dt class="col-sm-3">Marca</dt>
+  <dd class="col-sm-9"><%= @car_model.manufacture.name %></dd>
+
+  <dt class="col-sm-3">Características</dt>
+  <dd class="col-sm-9">
+    <% @car_model.car_options.split(',') do |option| %>
+      <p><%= option %></p>
+    <% end %>
+  </dd>
+</dl>

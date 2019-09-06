@@ -1,0 +1,17 @@
+<h1><%= @car.car_identification %></h1>
+<%= notice %>
+
+<dl class="row">
+  <dt class="col-sm-3">Fornecedor</dt>
+  <dd class="col-sm-9"><%= @maintenance.provider.name %></dd>
+
+  <dt class="col-sm-3">Nota Fiscal</dt>
+  <dd class="col-sm-9"><%= @maintenance.invoice %></dd>
+  
+  <dt class="col-sm-3">Valor</dt>
+  <dd class="col-sm-9"><%= @maintenance.service_cost.to_f %></dd>
+  
+  <% if @car.available? %>
+    <dd class="col-sm-9">Status: Disponível</dd>
+  <% end %>
+</dl>

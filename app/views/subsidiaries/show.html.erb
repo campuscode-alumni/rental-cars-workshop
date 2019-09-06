@@ -1,0 +1,22 @@
+<h1>Filial</h1>
+
+<%= @subsidiary.name %>
+
+<h3>Endereço</h3>
+
+<dl class="row">
+  <dt class="col-sm-3">Endereço</dt>
+  <dd class="col-sm-9"><%= @subsidiary.address.label %></dd>
+
+  <dt class="col-sm-3">Complemento</dt>
+  <dd class="col-sm-9"><%= @subsidiary.address.complement %></dd>
+
+  <dt class="col-sm-3">Bairro</dt>
+  <dd class="col-sm-9"><%= @subsidiary.address.neighborhood %></dd>
+
+  <dt class="col-sm-3">Cidade</dt>
+  <dd class="col-sm-9"><%= @subsidiary.address.city %></dd>
+
+  <dt class="col-sm-3">Estado</dt>
+  <dd class="col-sm-9"><%= @subsidiary.address.state %></dd>
+</dl>

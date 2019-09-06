@@ -1,0 +1,12 @@
+---
+pt-BR:
+  activerecord:
+    models:
+      car_model: 'Modelo'
+    attributes:
+      car_model:
+        name: 'Nome'
+        year: 'Ano'
+        car_options: 'Características'
+        manufacture: 'Fabricante'
+        manufacture_id: 'Fabricante'

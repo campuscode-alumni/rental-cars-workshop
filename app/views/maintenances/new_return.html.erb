@@ -1,0 +1,11 @@
+<% @maintenance.errors.full_messages.each do |message| %>
+  <div class="alert alert-danger"><%= message %></div>
+<% end %>
+
+<%= form_for @maintenance, url: car_return_maintenance_path, method: :post do |f| %>
+  <%= f.label :invoice, 'Nota Fiscal' %>
+  <%= f.text_field :invoice %>
+  <%= f.label :service_cost, 'Valor' %>
+  <%= f.text_field :service_cost %>
+  <%= f.submit 'Retornar de manutenção' %>
+<% end %>
