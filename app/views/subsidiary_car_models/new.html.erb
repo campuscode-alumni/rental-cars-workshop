@@ -1,14 +1,4 @@
-
-<% if @subsidiary_car_model.errors.any? %>
-  <div class="alert alert-danger">
-    <ul>
-      <% @subsidiary_car_model.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
-
+<%= render partial: 'shared/model_errors', locals: { object: @subsidiary_car_model } %>
 <%= form_for @subsidiary_car_model do |f| %>
   <div class="form-group">
     <%= f.label :car_model_id, 'Selecione o modelo' %>
@@ -19,6 +9,6 @@
     <%= f.label :price, 'Preço' %>
     <%= f.text_field :price, class: 'form-control' %>
   </div>
-  
+
   <%= f.submit 'Cadastrar preço', class: 'btn btn-primary' %>
 <% end %>

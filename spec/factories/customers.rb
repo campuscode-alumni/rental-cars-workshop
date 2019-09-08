@@ -1,8 +1,15 @@
 FactoryBot.define do
-  factory :customer do
-    name { 'Josevaldo' }
-    email { 'josevaldo@gmail.com' }
-    cpf { '0423647' }
-    phone { '11 939470000' }
+  factory :personal_customer do
+    name { 'Jose Silva' }
+    email { 'jose@gmail.com' }
+    cpf { '02471466095' }
+    phone { '11 999990000' }
+  end
+  factory :company_customer do
+    name { 'ACME Inc' }
+    fantasy_name { 'ACME Inc' }
+    email { 'acme@gmail.com' }
+    cnpj { '99509276000167' }
+    phone { '11 99990000' }
   end
 end

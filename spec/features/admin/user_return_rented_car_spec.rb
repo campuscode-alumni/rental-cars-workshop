@@ -8,7 +8,7 @@ feature 'User return car rental' do
     car_model = create(:car_model, name: 'Palio', manufacture: manufacture)
     car = create(:car, car_model: car_model, license_plate: 'XLG-1234',
                        subsidiary: subsidiary, car_km: '100')
-    customer = create(:customer, email: 'lucas@gmail.com')
+    customer = create(:personal_customer, email: 'lucas@gmail.com')
     rental = create(:rental, car: car, customer: customer, user: user)
     expect(RentalMailer).to receive(:send_return_receipt).with(rental.id)
                                                          .and_call_original
@@ -31,7 +31,8 @@ feature 'User return car rental' do
     car_model = create(:car_model, name: 'Palio')
     car = create(:car, car_model: car_model, license_plate: 'XLG-1234',
                        subsidiary: user.subsidiary, car_km: 230)
-    create(:rental, car: car, user: user)
+    customer = create(:personal_customer)
+    create(:rental, car: car, user: user, customer: customer)
 
     login_as user
     visit root_path

@@ -5,7 +5,7 @@ RSpec.describe RentalMailer, type: :mailer do
     it 'should send receipt' do
       user = create(:user)
       car = create(:car, subsidiary: user.subsidiary)
-      customer = create(:customer, cpf: '123456789')
+      customer = create(:personal_customer, name: 'Julio')
       rental = Rental.create(car: car, user: user, customer: customer)
 
       mail = RentalMailer.send_rental_receipt(rental.id)
@@ -22,9 +22,9 @@ RSpec.describe RentalMailer, type: :mailer do
       user = create(:user, subsidiary: subsidiary)
       manufacture = create(:manufacture)
       car_model = create(:car_model, name: 'Palio', manufacture: manufacture)
-      car = create(:car, car_model: car_model, license_plate: 'xlg1234',
+      car = create(:car, car_model: car_model, license_plate: 'XLG-1234',
                          subsidiary: subsidiary, car_km: '100')
-      customer = create(:customer)
+      customer = create(:personal_customer, name: 'Debora')
       rental = create(:rental, car: car, customer: customer, user: user)
 
       mail = RentalMailer.send_return_receipt(rental.id)

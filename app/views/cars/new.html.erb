@@ -1,3 +1,4 @@
 <h1>Novo carro</h1>
 
-<%= render partial: 'form', locals: { car: @car, car_models: @car_models } %>
+<%= render partial: 'shared/model_errors', locals: { object: @car } %>
+<%= render 'form' %>

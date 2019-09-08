@@ -7,18 +7,18 @@ feature 'User register rental' do
     manufacture = create(:manufacture)
     car_model = create(:car_model, manufacture: manufacture)
     car = create(:car, car_model: car_model, subsidiary: user.subsidiary)
-    customer = create(:customer)
+    customer = create(:personal_customer)
 
     login_as user
     visit root_path
     click_on 'Registrar Locação'
 
     select car.car_identification.to_s, from: 'Carro'
-    select customer.cpf_name.to_s, from: 'Cliente'
+    select customer.description, from: 'Cliente'
     click_on 'Enviar'
 
     expect(page).to have_content(car.car_identification)
-    expect(page).to have_content(customer.cpf_name.to_s)
+    expect(page).to have_content(customer.description)
     expect(page).to have_content(user.email)
   end
 
@@ -34,7 +34,7 @@ feature 'User register rental' do
                                 color: 'Azul', subsidiary: sub_paulista)
     car_sao_miguel = create(:car, car_model: onix, license_plate: 'CXZ-0987',
                                   color: 'Verde', subsidiary: sub_sao_miguel)
-    create(:customer)
+    create(:personal_customer)
 
     login_as user_paulista
     visit root_path
@@ -47,8 +47,8 @@ feature 'User register rental' do
   scenario 'customer cannot rent twice' do
     subsidiary = create(:subsidiary)
     user = create(:user, subsidiary: subsidiary)
-    car = create(:car, subsidiary: user.subsidiary)
-    customer = create(:customer, cpf: '123456789')
+    car = create(:car, subsidiary: subsidiary)
+    customer = create(:personal_customer, name: 'Henrique')
     create(:rental, car: car, user: user, customer: customer)
 
     login_as user
@@ -56,9 +56,30 @@ feature 'User register rental' do
     click_on 'Registrar Locação'
 
     select car.car_identification.to_s, from: 'Carro'
-    select customer.cpf, from: 'Cliente'
+    select customer.description, from: 'Cliente'
     click_on 'Enviar'
 
     expect(page).to have_content('Cliente possui locação em aberto')
+  end
+
+  scenario 'company can rent twice' do
+    subsidiary = create(:subsidiary)
+    user = create(:user, subsidiary: subsidiary)
+    car = create(:car, subsidiary: subsidiary)
+    customer = create(:company_customer, name: 'Acme INC')
+    create(:rental, car: car, user: user, customer: customer)
+
+    login_as user
+    visit root_path
+    click_on 'Registrar Locação'
+
+    select car.car_identification.to_s, from: 'Carro'
+    select customer.description, from: 'Cliente'
+    click_on 'Enviar'
+
+    expect(page).to have_content('Um email de confirmação foi enviado para o cliente')
+    expect(page).to have_content(car.car_identification)
+    expect(page).to have_content(customer.description)
+    expect(page).to have_content(user.email)
   end
 end

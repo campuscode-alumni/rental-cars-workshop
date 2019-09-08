@@ -1,0 +1,18 @@
+---
+pt-BR:
+  activerecord:
+    models:
+      customer: 'Cliente'
+      personal_customer: 'Cliente Pessoa Física'
+      company_customer: 'Cliente Pessoa Jurídica'
+    attributes:
+      personal_customer:
+        name: 'Nome'
+        email: 'Email'
+        phone: 'Telefone'
+        cpf: 'CPF'
+      company_customer:
+        name: 'Nome'
+        email: 'Email'
+        phone: 'Telefone'
+        cnpj: 'CNPJ'

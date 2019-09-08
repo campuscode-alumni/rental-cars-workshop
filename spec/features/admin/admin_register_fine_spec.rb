@@ -7,7 +7,7 @@ feature 'Admin register fine' do
     car_model = create(:car_model, name: 'Palio')
     car = create(:car, car_model: car_model, license_plate: 'ABC1234',
                        subsidiary: user.subsidiary)
-    create(:customer, name: 'Renan')
+    create(:personal_customer, name: 'Renan')
 
     login_as user, scope: :user
     visit root_path
@@ -38,7 +38,7 @@ feature 'Admin register fine' do
     car_model = create(:car_model, name: 'Palio')
     create(:car, car_model: car_model, license_plate: 'ABC1234',
                  subsidiary: user.subsidiary)
-    create(:customer, name: 'Renan')
+    create(:personal_customer, name: 'Renan')
 
     login_as user, scope: :user
     visit root_path

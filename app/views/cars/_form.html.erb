@@ -1,14 +1,4 @@
-<% if car.errors.any? %>
-  <div class="alert alert-danger">
-    <ul>
-      <% car.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
-
-<%= form_for car do |f| %>
+<%= form_for @car do |f| %>
   <div class="form-group">
     <%= f.label :car_model_id %>
     <%= f.collection_select :car_model_id, @car_models, :id, :name, {}, class: 'form-control' %>

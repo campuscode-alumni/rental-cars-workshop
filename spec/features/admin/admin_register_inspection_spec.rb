@@ -7,7 +7,6 @@ feature 'Admin register inspection' do
     palio = create(:car_model, name: 'Palio')
     create(:car, car_model: palio, license_plate: 'XLG-1234',
                  subsidiary: user.subsidiary)
-    create(:customer, cpf: '123456789')
 
     login_as user
     visit root_path

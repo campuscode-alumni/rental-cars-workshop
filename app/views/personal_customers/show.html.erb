@@ -1,0 +1,7 @@
+<h1><%= @customer.description %></h1>
+<p>Nome: <%= @customer.name %></p>
+<p>Email: <%= @customer.email %></p>
+<p>CPF: <%= @customer.cpf %></p>
+<p>Telefone: <%= @customer.phone %></p>
+
+<%= link_to "Editar cliente", edit_personal_customer_path, class: "btn btn-primary" %>

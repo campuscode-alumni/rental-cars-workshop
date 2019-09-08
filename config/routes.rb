@@ -23,7 +23,9 @@ Rails.application.routes.draw do
       post 'car_return'
     end
   end
- resources :customers, only: %i[index show new create edit update]
+ resources :customers, only: %i[index new]
+ resources :personal_customers, only: %i[new create edit update show]
+ resources :company_customers, only: %i[new create edit update show]
 
  namespace :api do
   namespace :v1 do

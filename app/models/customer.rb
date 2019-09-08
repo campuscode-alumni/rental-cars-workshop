@@ -1,9 +1,9 @@
 class Customer < ApplicationRecord
   has_many :rentals, dependent: :destroy
-  validates :name, :email, :cpf, :phone, presence: true
+  validates :name, :email, :phone, presence: true
 
-  def cpf_name
-    "#{cpf} - #{name}"
+  def description
+    "#{id} - #{name}"
   end
 
   def rental?
