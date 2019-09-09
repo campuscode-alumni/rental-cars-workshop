@@ -5,9 +5,11 @@
 
 <% if @car.on_maintenance? %>
   <%= link_to "Dar baixa em manutenção", new_return_maintenance_path(@car.current_maintenance) %>
-<% else%>
+<% elsif @car.available? %>
   <%= link_to "Enviar para vistoria", new_car_inspection_path(@car)%>
-  <%= link_to "Enviar para manutenção", new_car_maintenance_path(@car) %>
+  <% if (current_user.manager? && current_user.subsidiary?(@car.subsidiary)) || current_user.admin? %>
+    <%= link_to "Enviar para manutenção", new_car_maintenance_path(@car) %>
+  <% end %>
 <% end %>
 
 <h2>Histórico de Locações</h2>
