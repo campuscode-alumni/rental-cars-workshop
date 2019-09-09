@@ -10,6 +10,17 @@
     <%= render rental %>
   <% end %>
 </div>
+<div id="available-cars">
+  <h1>Carros Disponíveis</h1>
+  <% @available_cars.each do |car|%>
+  <div class="row">
+    <div class="col-sm">
+      <%= render car %>
+    </div>
+  </div>
+  <% end %>
+</div>
+
 <div id="maintenance">
   <h1>Carros em manutenção</h1>
   <% @cars_on_maintenance.each do |car|%>
