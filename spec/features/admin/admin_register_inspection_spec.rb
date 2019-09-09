@@ -10,7 +10,8 @@ feature 'Admin register inspection' do
 
     login_as user
     visit root_path
-    click_on 'Palio - XLG-1234'
+    fill_in 'search-field', with: 'XLG-1234'
+    click_on 'Buscar'
     click_on 'Enviar para vistoria'
     select '1/4', from: 'Nível de combustível'
     select 'Limpo', from: 'Limpeza'

@@ -5,13 +5,14 @@ feature 'Admin register fine' do
     create(:subsidiary)
     user = create(:user)
     car_model = create(:car_model, name: 'Palio')
-    car = create(:car, car_model: car_model, license_plate: 'ABC1234',
+    car = create(:car, car_model: car_model, license_plate: 'ABC-1234',
                        subsidiary: user.subsidiary)
     create(:personal_customer, name: 'Renan')
 
     login_as user, scope: :user
     visit root_path
-    click_on 'Palio - ABC1234'
+    fill_in 'search-field', with: 'ABC-1234'
+    click_on 'Buscar'
     click_on 'Registrar Multa'
     fill_in 'Data de emissão', with: '12/03/2019'
     fill_in 'Quantidade de pontos', with: 12
@@ -36,13 +37,14 @@ feature 'Admin register fine' do
     create(:subsidiary)
     user = create(:user)
     car_model = create(:car_model, name: 'Palio')
-    create(:car, car_model: car_model, license_plate: 'ABC1234',
+    create(:car, car_model: car_model, license_plate: 'ABC-1234',
                  subsidiary: user.subsidiary)
     create(:personal_customer, name: 'Renan')
 
     login_as user, scope: :user
     visit root_path
-    click_on 'Palio - ABC1234'
+    fill_in 'search-field', with: 'ABC-1234'
+    click_on 'Buscar'
     click_on 'Registrar Multa'
     fill_in 'Data de emissão', with: ''
     fill_in 'Quantidade de pontos', with: ''

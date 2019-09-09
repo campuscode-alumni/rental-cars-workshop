@@ -1,10 +1,12 @@
-<% @cars.each do |car|%>
-  <%= link_to "#{car.car_model.name} - #{car.license_plate}", car %>
-<% end %>
-
 <div id="scheduled-rentals">
   <h1>Locações Agendadas</h1>
   <% @scheduled_rentals.each do |rental| %>
+    <%= render rental %>
+  <% end %>
+</div>
+<div id="active-rentals">
+  <h1>Locações em Andamento</h1>
+  <% @active_rentals.each do |rental| %>
     <%= render rental %>
   <% end %>
 </div>

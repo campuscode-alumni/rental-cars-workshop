@@ -15,8 +15,8 @@ feature 'User return car rental' do
 
     login_as user
     visit root_path
-    click_on 'Palio - XLG-1234'
-    click_on 'Devolução de carro'
+    click_on "#{rental.id} - XLG-1234"
+    click_on 'Confirmar Devolução'
 
     fill_in 'Quilometragem', with: '199'
     click_on 'Devolver carro'
@@ -32,12 +32,12 @@ feature 'User return car rental' do
     car = create(:car, car_model: car_model, license_plate: 'XLG-1234',
                        subsidiary: user.subsidiary, car_km: 230)
     customer = create(:personal_customer)
-    create(:rental, car: car, user: user, customer: customer)
+    rental = create(:rental, car: car, user: user, customer: customer)
 
     login_as user
     visit root_path
-    click_on 'Palio - XLG-1234'
-    click_on 'Devolução de carro'
+    click_on "#{rental.id} - XLG-1234"
+    click_on 'Confirmar Devolução'
 
     fill_in 'Quilometragem', with: '199'
     click_on 'Devolver carro'

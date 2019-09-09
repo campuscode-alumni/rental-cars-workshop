@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   end
   resources :subsidiary_car_models, only: %i[show new create]
   resources :cars, only: %i[show new create] do
+    get 'search', on: :collection
     resources :fines, only: %i[show new create]
     resources :maintenances, only: %i[show new create edit update]
     resources :fines, only: %i[show new create]

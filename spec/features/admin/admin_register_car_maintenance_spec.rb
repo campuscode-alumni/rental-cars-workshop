@@ -11,7 +11,8 @@ feature 'Admin send car to maintenance ' do
     login_as user, scope: :user
     visit root_path
 
-    click_on 'Palio - XLG-1234'
+    fill_in 'search-field', with: 'XLG-1234'
+    click_on 'Buscar'
     click_on 'Enviar para manutenção'
     select 'Solucoes.ltda', from: 'Fornecedor parceiro'
     click_on 'Enviar para manutenção'
@@ -37,7 +38,8 @@ feature 'Admin send car to maintenance ' do
     login_as user, scope: :user
     visit root_path
 
-    click_on 'Palio - XLG-1234'
+    fill_in 'search-field', with: 'XLG-1234'
+    click_on 'Buscar'
     expect(page).not_to have_link('Enviar para manutenção')
     expect(page).to have_content('Status: Em manutenção')
   end

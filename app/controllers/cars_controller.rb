@@ -17,6 +17,12 @@ class CarsController < ApplicationController
     @car = Car.find(params[:id])
   end
 
+  def search
+    @car = Car.find_by(license_plate: params[:q])
+    return redirect_to @car if @car
+    redirect_to root_path, notice: 'Nenhum carro encontrado'
+  end
+
   private
 
   def car_params
