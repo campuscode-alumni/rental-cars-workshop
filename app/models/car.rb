@@ -6,7 +6,7 @@ class Car < ApplicationRecord
   has_many :fines, dependent: :destroy
   has_many :rentals, dependent: :destroy
 
-  enum status: { available: 0, on_maintenance: 5 }
+  enum status: { available: 0, on_maintenance: 5, rented: 10 }
 
   validates :car_model, :car_km, :color, :license_plate, presence: true
 

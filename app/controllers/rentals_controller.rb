@@ -1,4 +1,5 @@
 class RentalsController < ApplicationController
+
   def new
     @rental = Rental.new
     @cars = current_user.subsidiary.cars
@@ -15,6 +16,14 @@ class RentalsController < ApplicationController
     @cars = current_user.subsidiary.cars
     @customers = Customer.all
     render :new
+  end
+
+  def withdraw
+    @rental = Rental.find(params[:id])
+    @rental.started_at = Time.zone.now
+    @rental.active!
+    @rental.car.rented!
+    redirect_to @rental
   end
 
   def show
@@ -41,6 +50,7 @@ class RentalsController < ApplicationController
   private
 
   def rental_params
-    params.require(:rental).permit(:car_id, :customer_id)
+    params.require(:rental).permit(:car_id, :customer_id, :scheduled_start,
+                                   :scheduled_end)
   end
 end

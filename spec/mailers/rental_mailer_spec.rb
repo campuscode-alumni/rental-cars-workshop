@@ -6,7 +6,7 @@ RSpec.describe RentalMailer, type: :mailer do
       user = create(:user)
       car = create(:car, subsidiary: user.subsidiary)
       customer = create(:personal_customer, name: 'Julio')
-      rental = Rental.create(car: car, user: user, customer: customer)
+      rental = create(:finished_rental, car: car, user: user, customer: customer)
 
       mail = RentalMailer.send_rental_receipt(rental.id)
       expect(mail.to).to include customer.email

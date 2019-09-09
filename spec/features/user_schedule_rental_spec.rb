@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'User register rental' do
+feature 'User schedule rental' do
   scenario 'successfully' do
     subsidiary = create(:subsidiary)
     user = create(:user, subsidiary: subsidiary)
@@ -11,15 +11,20 @@ feature 'User register rental' do
 
     login_as user
     visit root_path
-    click_on 'Registrar Locação'
+    click_on 'Agendar Locação'
 
     select car.car_identification.to_s, from: 'Carro'
     select customer.description, from: 'Cliente'
+    fill_in 'Retirada Prevista', with: '20/10/2019'
+    fill_in 'Devolução Prevista', with: '25/10/2019'
     click_on 'Enviar'
 
     expect(page).to have_content(car.car_identification)
     expect(page).to have_content(customer.description)
     expect(page).to have_content(user.email)
+    expect(page).to have_content('Status: Agendada')
+    expect(page).to have_content('Retirada Prevista: 20/10/2019')
+    expect(page).to have_content('Devolução Prevista: 25/10/2019')
   end
 
   scenario 'only from current subsidiary' do
@@ -38,7 +43,7 @@ feature 'User register rental' do
 
     login_as user_paulista
     visit root_path
-    click_on 'Registrar Locação'
+    click_on 'Agendar Locação'
 
     expect(page).to_not have_content(car_sao_miguel.car_identification)
     expect(page).to have_content(car_paulista.car_identification)
@@ -49,14 +54,16 @@ feature 'User register rental' do
     user = create(:user, subsidiary: subsidiary)
     car = create(:car, subsidiary: subsidiary)
     customer = create(:personal_customer, name: 'Henrique')
-    create(:rental, car: car, user: user, customer: customer)
+    create(:rental, car: car, user: user, customer: customer, status: :active)
 
     login_as user
     visit root_path
-    click_on 'Registrar Locação'
+    click_on 'Agendar Locação'
 
     select car.car_identification.to_s, from: 'Carro'
     select customer.description, from: 'Cliente'
+    fill_in 'Retirada Prevista', with: '20/10/2019'
+    fill_in 'Devolução Prevista', with: '25/10/2019'
     click_on 'Enviar'
 
     expect(page).to have_content('Cliente possui locação em aberto')
@@ -67,14 +74,16 @@ feature 'User register rental' do
     user = create(:user, subsidiary: subsidiary)
     car = create(:car, subsidiary: subsidiary)
     customer = create(:company_customer, name: 'Acme INC')
-    create(:rental, car: car, user: user, customer: customer)
+    create(:rental, car: car, user: user, customer: customer, status: :active)
 
     login_as user
     visit root_path
-    click_on 'Registrar Locação'
+    click_on 'Agendar Locação'
 
     select car.car_identification.to_s, from: 'Carro'
     select customer.description, from: 'Cliente'
+    fill_in 'Retirada Prevista', with: '20/10/2019'
+    fill_in 'Devolução Prevista', with: '25/10/2019'
     click_on 'Enviar'
 
     expect(page).to have_content('Um email de confirmação foi enviado para o cliente')

@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   resources :subsidiaries, only: %i[show new create]
   resources :rentals, only: %i[show new create] do
     member do
+      post 'withdraw'
+      post 'return'
       get 'new_car_return'
       post 'return_car'
     end

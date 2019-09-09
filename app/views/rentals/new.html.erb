@@ -1,10 +1,13 @@
-
 <h1>Nova Locação</h1>
 <%= render partial: 'shared/model_errors', locals: { object: @rental } %>
 <%= form_for @rental do |f| %>
-  <%= f.label :car_id, 'Carro' %>
+  <%= f.label :car_id %>
   <%= f.collection_select(:car_id, @cars, :id, :car_identification) %>
-  <%= f.label :customer_id, 'Cliente' %>
+  <%= f.label :customer_id  %>
   <%= f.collection_select(:customer_id, @customers, :id, :description) %>
+  <%= f.label :scheduled_start %>
+  <%= f.date_field :scheduled_start %>
+  <%= f.label :scheduled_end %>
+  <%= f.date_field :scheduled_end%>
   <%= f.submit 'Enviar' %>
 <% end %>

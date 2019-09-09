@@ -6,7 +6,7 @@ class Customer < ApplicationRecord
     "#{id} - #{name}"
   end
 
-  def rental?
-    rentals.where(rentals: { finished_at: nil }).count.positive?
+  def active_rental
+    rentals.active.last
   end
 end

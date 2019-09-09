@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_08_172429) do
+ActiveRecord::Schema.define(version: 2019_09_08_213852) do
 
   create_table "addresses", force: :cascade do |t|
     t.string "street"
@@ -116,6 +116,11 @@ ActiveRecord::Schema.define(version: 2019_09_08_172429) do
     t.datetime "start_at"
     t.datetime "finish_at"
     t.datetime "finished_at"
+    t.integer "status", default: 0
+    t.date "scheduled_start"
+    t.date "scheduled_end"
+    t.datetime "started_at"
+    t.datetime "ended_at"
     t.index ["car_id"], name: "index_rentals_on_car_id"
     t.index ["customer_id"], name: "index_rentals_on_customer_id"
     t.index ["user_id"], name: "index_rentals_on_user_id"

@@ -1,0 +1,16 @@
+---
+pt-BR:
+  scheduled: 'Agendada'
+  active: 'Em andamento'
+  finished: 'Finalizada'
+  activerecord:
+    models:
+      rental: 'Locação'
+    attributes:
+      rental:
+        car_id: 'Carro'
+        customer_id: 'Cliente'
+        scheduled_start: 'Retirada Prevista'
+        scheduled_end: 'Devolução Prevista'
+        started_at: 'Retirada Efetiva'
+        ended_at: 'Devolução Efetiva'

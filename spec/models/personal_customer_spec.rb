@@ -14,5 +14,4 @@ RSpec.describe PersonalCustomer, type: :model do
       expect(personal_customer.company_customer?).to be false
     end
   end
-
 end

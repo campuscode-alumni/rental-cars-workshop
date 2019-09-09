@@ -9,7 +9,7 @@ RSpec.describe Rental, type: :model do
         car = build(:car, subsidiary: user.subsidiary)
         customer = build(:personal_customer)
         create(:rental, car: car, user: user, customer: customer,
-                        finished_at: Time.zone.today)
+                        finished_at: Time.zone.today, status: :finished)
         rental = build(:rental, car: car, user: user, customer: customer)
 
         expect(rental).to be_valid

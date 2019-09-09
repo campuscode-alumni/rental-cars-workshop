@@ -14,9 +14,11 @@ feature 'Admin sends rental recipt through email' do
 
     login_as user
     visit root_path
-    click_on 'Registrar Locação'
+    click_on 'Agendar Locação'
     select car.car_identification.to_s, from: 'Carro'
     select customer.description, from: 'Cliente'
+    fill_in 'Retirada Prevista', with: '20/10/2019'
+    fill_in 'Devolução Prevista', with: '25/10/2019'
     click_on 'Enviar'
 
     expect(page).to have_content('Um email de confirmação foi enviado para o '\

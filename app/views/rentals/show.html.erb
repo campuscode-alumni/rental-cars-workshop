@@ -1,5 +1,13 @@
-<h1>Detalhes da Locação</h1>
+<h1>Locação</h1>
+Status: <%= t @rental.status %>
 <p><%= @rental.car.car_identification %></p>
 <p><%= @rental.customer.description %></p>
 <p><%= @rental.user.email %></p>
-
+Retirada Prevista: <%= l @rental.scheduled_start %>
+Devolução Prevista: <%= l @rental.scheduled_end %>
+<% if @rental.scheduled? %>
+  <%= link_to 'Confirmar Retirada', withdraw_rental_path(@rental), method: :post %>
+<% end %>
+<% if @rental.active? %>
+    <%= link_to "Confirmar Devolução", new_car_return_rental_path(@rental) %>
+<%end %>

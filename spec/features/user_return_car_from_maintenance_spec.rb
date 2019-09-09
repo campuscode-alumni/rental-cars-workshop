@@ -29,7 +29,7 @@ feature 'User return car from maintenance' do
 
   scenario 'only cars on maintenance' do
     user = create(:user)
-    provider = create(:provider, name: 'Solucoes.ltda', cnpj: '1234567/777')
+    provider = create(:provider, name: 'Solucoes.ltda')
     car_palio = create(:car, license_plate: 'XLG1234', status: :on_maintenance)
     car_uno = create(:car, license_plate: 'GLS4567')
     create(:maintenance, car: car_palio, provider: provider)
