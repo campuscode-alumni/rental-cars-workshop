@@ -17,13 +17,11 @@ feature 'Admin register car' do
     fill_in 'Placa', with: 'HPL6666'
     click_on 'Criar carro'
 
-    expect(page).to have_content('Modelo')
     expect(page).to have_content('Sport')
     expect(page).to have_content('Quilometragem')
     expect(page).to have_content('200')
     expect(page).to have_content('Cor')
     expect(page).to have_content('Verde Musgo')
-    expect(page).to have_content('Placa')
     expect(page).to have_content('HPL6666')
   end
 

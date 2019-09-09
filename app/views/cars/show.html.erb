@@ -1,7 +1,6 @@
 <h1>Detalhes do Carro</h1>
 <%= render @car %>
 
-<h2>Histórico de Locações</h2>
 <%= link_to 'Registrar Multa', new_car_fine_path(@car) %>
 
 <% if @car.on_maintenance? %>
@@ -14,7 +13,7 @@
 <h2>Histórico de Locações</h2>
 <% @car.rentals.each do |rental| %>
   <%= rental.start_at %>
-  <% if rental.finished_at? %>
+  <% if rental.finished? %>
     <%= rental.finished_at %>
   <% else %>
     <%= link_to "Devolução de carro", new_car_return_rental_path(rental) %>
