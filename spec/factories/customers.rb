@@ -2,7 +2,7 @@ FactoryBot.define do
   factory :personal_customer do
     name { 'Jose Silva' }
     sequence(:email) { |n| "email#{n}@email.com" }
-    cpf { '02471466095' }
+    cpf { Faker::IDNumber.brazilian_citizen_number(formatted: true) }
     phone { '11 999990000' }
   end
   factory :company_customer do
