@@ -3,6 +3,6 @@ class RentalDecorator < ApplicationDecorator
 
   def started_at
     return '---' if scheduled?
-    return started_at if active?
+    return I18n.l(super, format: :short) if active?
   end
 end

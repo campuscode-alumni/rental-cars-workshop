@@ -20,7 +20,7 @@ feature 'User start rental' do
     rental.reload
     expect(current_path).to eq rental_path(rental.id)
     expect(rental.active?).to be true
-    expect(page).to have_content('Status: Em andamento')
+    expect(page).to have_content('Em andamento')
     expect(page).to have_link('Confirmar Devolução')
   end
 end

@@ -9,7 +9,7 @@
   <dt class="col-sm-3">Devolução Prevista:</dt>
   <dd class="col-sm-9"><%= l @rental.scheduled_end %></dd>
   <dt class="col-sm-3">Data de Retirada:</dt>
-  <dt class="col-sm-9"><%= l @rental.started_at %></dt>
+  <dt class="col-sm-9"><%= @rental.started_at %></dt>
   <% if @rental.finished? %>
     <dt class="col-sm-9"><%= l @rental.finished_at %></dt>
   <% else %>

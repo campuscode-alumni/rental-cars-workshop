@@ -20,7 +20,7 @@ describe RentalDecorator do
 
       result = rental.decorate.started_at
 
-      expect(result).to eq DateTime.parse('2019-01-01')
+      expect(result).to eq I18n.l(DateTime.parse('2019-01-01'), format: :short)
     end
   end
 end

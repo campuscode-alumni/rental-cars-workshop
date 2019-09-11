@@ -1,5 +1,7 @@
 class CarPresenter < SimpleDelegator
-  attr_reader :user
+  include Rails.application.routes.url_helpers
+
+  attr_reader :user, :policy
 
   def initialize(car, user, policy = nil)
     super(car)
@@ -15,5 +17,11 @@ class CarPresenter < SimpleDelegator
     end
 
     h.link_to 'Dar baixa em manutenção', new_return_maintenance_path(current_maintenance)
+  end
+
+  private
+
+  def h
+    ApplicationController.helpers
   end
 end

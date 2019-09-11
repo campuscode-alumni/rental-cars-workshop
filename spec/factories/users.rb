@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :user do
-    email { 'email@email.com' }
+    sequence(:email) { |n| "email#{n}@email.com" }
     password { '12345678' }
     subsidiary
     role { :employee }
@@ -11,6 +11,10 @@ FactoryBot.define do
 
     trait :admin do
       role { :admin }
+    end
+
+    trait :employee do
+      role { :employee }
     end
   end
 end

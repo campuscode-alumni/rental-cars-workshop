@@ -11,4 +11,8 @@ class User < ApplicationRecord
   def subsidiary?(sub)
     subsidiary == sub
   end
+
+  def guest?
+    false
+  end
 end
