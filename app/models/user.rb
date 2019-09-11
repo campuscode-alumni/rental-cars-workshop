@@ -9,6 +9,6 @@ class User < ApplicationRecord
   has_many :inspections, dependent: :destroy
 
   def subsidiary?(sub)
-    self.subsidiary == sub
+    subsidiary == sub
   end
 end

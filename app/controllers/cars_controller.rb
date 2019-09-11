@@ -1,5 +1,4 @@
 class CarsController < ApplicationController
-
   def show
     car = Car.find(params[:id])
     @car = CarPresenter.new(car, current_user)
@@ -22,6 +21,7 @@ class CarsController < ApplicationController
   def search
     @car = Car.find_by(license_plate: params[:q])
     return redirect_to @car if @car
+
     redirect_to root_path, notice: 'Nenhum carro encontrado'
   end
 

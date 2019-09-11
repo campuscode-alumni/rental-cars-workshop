@@ -11,8 +11,9 @@ class CarPresenter < SimpleDelegator
     return '' if rented?
     return '' unless policy.authorized?
     if available?
-      return h.link_to "Enviar para manutenção", new_car_maintenance_path(id)
+      return h.link_to 'Enviar para manutenção', new_car_maintenance_path(id)
     end
-    h.link_to "Dar baixa em manutenção", new_return_maintenance_path(current_maintenance)
+
+    h.link_to 'Dar baixa em manutenção', new_return_maintenance_path(current_maintenance)
   end
 end

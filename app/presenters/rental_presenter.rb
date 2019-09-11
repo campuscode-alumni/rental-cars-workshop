@@ -7,10 +7,10 @@ class RentalPresenter < SimpleDelegator
     super(rental)
   end
 
-  def status()
+  def status
     if scheduled?
       h.content_tag(:span, class: 'badge badge-success') do
-        "Agendada"
+        'Agendada'
       end
     end
   end
@@ -22,6 +22,7 @@ class RentalPresenter < SimpleDelegator
   end
 
   private
+
   def h
     ApplicationController.helpers
   end
