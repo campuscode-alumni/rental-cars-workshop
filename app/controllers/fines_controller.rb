@@ -6,10 +6,8 @@ class FinesController < ApplicationController
 
   def create
     @car = Car.find(params[:car_id])
-    @fine = @car.fines.new(fine_params)
-    if @fine.save
-      @fine.create_credit(amount: @fine.fine_value,
-                          subsidiary: current_user.subsidiary)
+    @fine = FineIssuer.new(@car, fine_params).call
+    if @fine.persisted?
       flash[:notice] = t '.success'
       redirect_to car_fine_path(@car, @fine)
     else

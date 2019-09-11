@@ -8,6 +8,10 @@ class Rental < ApplicationRecord
 
   enum status: { scheduled: 0, active: 5, finished: 10 }
 
+  def finish!
+    update(finished_at: Time.zone.now, status: :finished)
+  end
+
   private
 
   def customer_cannot_rental_twice
