@@ -1,4 +1,10 @@
 class CarsController < ApplicationController
+
+  def show
+    car = Car.find(params[:id])
+    @car = CarPresenter.new(car, current_user)
+  end
+
   def new
     @car = Car.new
     @car_models = CarModel.all
@@ -11,10 +17,6 @@ class CarsController < ApplicationController
 
     @car_models = CarModel.all
     render :new
-  end
-
-  def show
-    @car = Car.find(params[:id])
   end
 
   def search

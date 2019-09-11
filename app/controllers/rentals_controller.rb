@@ -1,5 +1,11 @@
 class RentalsController < ApplicationController
 
+  def show
+    rental = Rental.find(params[:id])
+    @rental = RentalPresenter.new(rental.decorate)
+  end
+
+
   def new
     @rental = Rental.new
     @cars = current_user.subsidiary.cars
@@ -24,10 +30,6 @@ class RentalsController < ApplicationController
     @rental.active!
     @rental.car.rented!
     redirect_to @rental
-  end
-
-  def show
-    @rental = Rental.find(params[:id])
   end
 
   def new_car_return
