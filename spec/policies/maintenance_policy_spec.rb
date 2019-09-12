@@ -45,6 +45,5 @@ describe MaintenancePolicy do
       result = MaintenancePolicy.new(car, guest).authorized?
       expect(result).to be false
     end
- 
   end
 end

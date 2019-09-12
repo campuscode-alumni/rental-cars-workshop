@@ -3,7 +3,6 @@ require 'rails_helper'
 describe RentalPresenter do
   include Rails.application.routes.url_helpers
   describe '#status' do
-
     it 'should render a green badge for scheduled' do
       car = create(:car)
       customer = create(:personal_customer)
@@ -33,13 +32,11 @@ describe RentalPresenter do
       car = create(:car)
       customer = create(:personal_customer)
       rental = create(:rental, car: car, customer: customer,
-                     status: :active)
+                               status: :active)
 
       result = RentalPresenter.new(rental).withdraw_link
 
-      expect(result).to eq ""
+      expect(result).to eq ''
     end
-
-
   end
 end

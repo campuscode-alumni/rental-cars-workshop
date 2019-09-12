@@ -2,9 +2,7 @@ class RentalDecorator < ApplicationDecorator
   delegate_all
 
   def started_at
-    if scheduled?
-      return '---'
-    end
-    return started_at if active?
+    return '---' if scheduled?
+    return I18n.l(super, format: :short) if active?
   end
 end

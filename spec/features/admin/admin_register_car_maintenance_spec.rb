@@ -43,7 +43,6 @@ feature 'Admin send car to maintenance ' do
     click_on 'Buscar'
 
     expect(page).not_to have_link('Enviar para manutenção')
-  
   end
 
   scenario 'admin from other subisdiary' do
@@ -71,9 +70,7 @@ feature 'Admin send car to maintenance ' do
     expect(current_path).to eq car_path(car)
     expect(page).not_to have_link('Enviar para manutenção')
     expect(page).to have_content('Status: Em manutenção')
-  
   end
-
 
   scenario 'cannot send twice' do
     user = create(:user)

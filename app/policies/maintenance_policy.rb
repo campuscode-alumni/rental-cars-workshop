@@ -7,9 +7,11 @@ class MaintenancePolicy
   def authorized?
     return true if user.admin?
     return true if user.manager? && user.subsidiary?(car.subsidiary)
+
     false
   end
 
-  private 
+  private
+
   attr_reader :car, :user
 end

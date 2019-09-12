@@ -4,4 +4,10 @@ class ApplicationController < ActionController::Base
   def current_user
     super || NilUser.new
   end
+
+  def user_signed_in?
+    return false if current_user.guest?
+
+    super
+  end
 end

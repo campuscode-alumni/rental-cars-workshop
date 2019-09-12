@@ -14,4 +14,8 @@ class NilUser
   def guest?
     true
   end
+
+  def email
+    ''
+  end
 end
