@@ -1,5 +1,4 @@
 class RentalsController < ApplicationController
-
   def show
     rental = Rental.find(params[:id])
     @rental = RentalPresenter.new(rental.decorate)
@@ -38,16 +37,21 @@ class RentalsController < ApplicationController
 
   def return_car
     @rental = Rental.find(params[:id])
-    @car = @rental.car
-    if @car.update(car_km: params[:car][:car_km], status: :available)
-      @rental.update(finished_at: Time.zone.now)
-      RentalMailer.send_return_receipt(@rental.id).deliver_now
+    if RentalFinisher.new(@rental, params[:car][:car_km]).finish
       redirect_to @rental.car, notice: 'Carro devolvido com sucesso'
     else
       flash.now[:notice] = 'Nao foi possivel salvar'
       render :new_car_return
     end
   end
+
+  def rental_by_period
+    start = params[:report_start]
+    finish = params[:report_end]
+
+    @rentals = RentalByPeriodQuery.new(start..finish).call
+  end
+
 
   private
 
