@@ -1,5 +1,5 @@
 class PersonalCustomer < Customer
-  validates :cpf, presence: true, cpf: true, uniqueness: true
+  #validates :cpf, presence: true, cpf: true, uniqueness: true
 
   def personal_customer?
     true

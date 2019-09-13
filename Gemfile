@@ -5,6 +5,7 @@ ruby '2.6.4'
 
 gem 'bootstrap', '~> 4.3.1'
 gem 'coffee-rails', '~> 4.2'
+gem 'delayed_job_active_record'
 gem 'devise', '~> 4.6', '>= 4.6.2'
 gem 'draper'
 gem 'jbuilder', '~> 2.5'

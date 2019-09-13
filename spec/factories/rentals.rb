@@ -2,7 +2,7 @@ FactoryBot.define do
   factory :rental do
     car
     user
-    customer { nil }
+    customer { create(:personal_customer)}
     scheduled_start { 1.day.from_now }
     scheduled_end { 5.days.from_now }
     started_at { 1.day.from_now }
