@@ -1,5 +1,6 @@
 class RentalFinisher
-  def initialize(rental, new_km, mailer = RentalMailer)
+  def initialize(rental, new_km, mailer = RentalMailer, services = [
+    CarReturner, RentalFinisherNotifier, InspectionStarter ])
     @rental = rental
     @new_km = new_km
     @customer = rental.customer
@@ -8,10 +9,8 @@ class RentalFinisher
   end
 
   def finish()
-    return false unless car.update(car_km: new_km, status: :available)
     finish_rental
-    notify_customer
-    true
+    services.each { |s| s.new(rental).call }
   end
 
   private
@@ -21,6 +20,11 @@ class RentalFinisher
   def finish_rental
     rental.update(status: :finished, finished_at: Time.zone.now)
   end
+
+  def return_car
+     car.update(car_km: new_km, status: :available)
+  end
+
 
   def notify_customer
     mailer.send_return_receipt(rental.id).deliver_now
