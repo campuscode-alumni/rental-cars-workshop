@@ -4,7 +4,6 @@ class RentalsController < ApplicationController
     @rental = RentalPresenter.new(rental.decorate)
   end
 
-
   def new
     @rental = Rental.new
     @cars = current_user.subsidiary.cars
@@ -40,6 +39,7 @@ class RentalsController < ApplicationController
     if RentalFinisher.new(@rental, params[:car][:car_km]).finish
       redirect_to @rental.car, notice: 'Carro devolvido com sucesso'
     else
+      @car = @rental.car
       flash.now[:notice] = 'Nao foi possivel salvar'
       render :new_car_return
     end

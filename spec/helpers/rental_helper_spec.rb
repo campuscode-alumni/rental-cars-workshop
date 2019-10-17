@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe RentalHelper, type: :helper do
-
   context '#status' do
     it 'should render a green badge for scheduled' do
       car = create(:car)
@@ -26,5 +25,4 @@ RSpec.describe RentalHelper, type: :helper do
       expect(result).to match /Em Andamento/
     end
   end
-
 end
