@@ -1,6 +1,5 @@
 class RentalFinisher
-  def initialize(rental, new_km, mailer = RentalMailer, services = [
-    CarReturner, RentalFinisherNotifier, InspectionStarter ])
+  def initialize(rental, new_km, mailer = RentalMailer)
     @rental = rental
     @new_km = new_km
     @customer = rental.customer
@@ -10,7 +9,8 @@ class RentalFinisher
 
   def finish()
     finish_rental
-    services.each { |s| s.new(rental).call }
+    return_car
+    notify_customer
   end
 
   private
