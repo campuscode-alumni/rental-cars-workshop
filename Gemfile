@@ -9,7 +9,7 @@ gem 'devise', '~> 4.6', '>= 4.6.2'
 gem 'jbuilder', '~> 2.5'
 gem 'jquery-rails'
 gem 'mini_racer', platforms: :ruby
-gem 'puma', '~> 3.11'
+gem 'puma', '~> 3.12'
 gem 'rails', '~> 5.2.3'
 gem 'sass-rails', '~> 5.0'
 gem 'sqlite3'
